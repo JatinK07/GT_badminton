@@ -1,1 +1,42 @@
-...
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Badminton Club Rankings</title>
+    <style>
+        body { font-family: Arial; padding: 2em; background: #f9f9f9; }
+        h1 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-top: 1em; background: #fff; }
+        th, td { border: 1px solid #ccc; padding: 0.5em 1em; text-align: left; }
+        th { background: #eee; }
+        a { text-decoration: none; color: #007bff; }
+        .actions { margin-top: 1em; }
+    </style>
+</head>
+<body>
+    <h1>🏸 Badminton Club Rankings</h1>
+
+    <div class="actions">
+        <a href="/add_player">➕ Add Player</a> |
+        <a href="/record_match">🎮 Record Match</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>City</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>{{ player.city }}</td>
+                <td>{{ player.rating }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

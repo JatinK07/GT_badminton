@@ -1,1 +1,92 @@
-...
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Record Match</title>
+    <style>
+        body { font-family: Arial; padding: 2em; background: #f9f9f9; }
+        form { background: #fff; padding: 1em; border: 1px solid #ccc; max-width: 600px; }
+        label { display: block; margin-top: 1em; }
+        select, input { width: 100%; padding: 0.5em; margin-top: 0.2em; }
+        button { margin-top: 1em; padding: 0.5em 1em; }
+    </style>
+</head>
+<body>
+    <h1>Record Match</h1>
+    <form method="POST">
+        <label>Match Type:
+            <select name="match_type" id="match_type" onchange="toggleMatchFields()" required>
+                <option value="">-- Select --</option>
+                <option value="singles">Singles</option>
+                <option value="doubles">Doubles</option>
+            </select>
+        </label>
+
+        <div id="singles_fields" style="display:none;">
+            <label>Player A:
+                <select name="a">
+                    {% for id, p in players.items() %}
+                    <option value="{{ id }}">{{ p.name }} ({{ p.city }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>Player B:
+                <select name="b">
+                    {% for id, p in players.items() %}
+                    <option value="{{ id }}">{{ p.name }} ({{ p.city }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+
+        <div id="doubles_fields" style="display:none;">
+            <label>Team A - Player 1:
+                <select name="a1">
+                    {% for id, p in players.items() %}
+                    <option value="{{ id }}">{{ p.name }} ({{ p.city }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>Team A - Player 2:
+                <select name="a2">
+                    {% for id, p in players.items() %}
+                    <option value="{{ id }}">{{ p.name }} ({{ p.city }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>Team B - Player 1:
+                <select name="b1">
+                    {% for id, p in players.items() %}
+                    <option value="{{ id }}">{{ p.name }} ({{ p.city }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>Team B - Player 2:
+                <select name="b2">
+                    {% for id, p in players.items() %}
+                    <option value="{{ id }}">{{ p.name }} ({{ p.city }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+
+        <label>Winner:
+            <select name="winner" required>
+                <option value="A">Team A / Player A</option>
+                <option value="B">Team B / Player B</option>
+            </select>
+        </label>
+
+        <button type="submit">Record Match</button>
+    </form>
+
+    <p><a href="/">⬅ Back to Rankings</a></p>
+
+    <script>
+        function toggleMatchFields() {
+            var type = document.getElementById('match_type').value;
+            document.getElementById('singles_fields').style.display = (type === 'singles') ? 'block' : 'none';
+            document.getElementById('doubles_fields').style.display = (type === 'doubles') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

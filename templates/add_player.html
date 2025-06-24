@@ -1,1 +1,23 @@
-...
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Player</title>
+    <style>
+        body { font-family: Arial; padding: 2em; background: #f9f9f9; }
+        form { background: #fff; padding: 1em; border: 1px solid #ccc; max-width: 400px; }
+        label { display: block; margin-top: 1em; }
+        input { width: 100%; padding: 0.5em; margin-top: 0.2em; }
+        button { margin-top: 1em; padding: 0.5em 1em; }
+    </style>
+</head>
+<body>
+    <h1>Add New Player</h1>
+    <form method="POST">
+        <label>Player ID: <input type="text" name="id" required></label>
+        <label>Name: <input type="text" name="name" required></label>
+        <label>City: <input type="text" name="city" required></label>
+        <button type="submit">Add Player</button>
+    </form>
+    <p><a href="/">⬅ Back to Rankings</a></p>
+</body>
+</html>

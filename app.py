@@ -25,7 +25,7 @@ def add_player():
         name = request.form["name"]
         city = request.form["city"]
         players[player_id] = Player(player_id, name, city)
-        save_players(PLAYERS_FILE, players)
+        save_players(players)
         return redirect("/")
     return render_template("add_player.html")
 

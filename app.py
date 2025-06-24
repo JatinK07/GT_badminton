@@ -10,8 +10,8 @@ DATA_DIR = "badminton-rating/data"
 PLAYERS_FILE = os.path.join(DATA_DIR, "players.json")
 MATCHES_FILE = os.path.join(DATA_DIR, "match_history.json")
 
-players = load_players(PLAYERS_FILE)
-matches = load_matches(MATCHES_FILE)
+players = load_players()
+matches = load_matches()
 
 @app.route("/")
 def index():
@@ -47,8 +47,8 @@ def record_match():
             b2 = request.form["b2"]
             handle_doubles([players[a1], players[a2]], [players[b1], players[b2]], winner)
             matches.append({"type": "doubles", "A": [a1, a2], "B": [b1, b2], "winner": winner})
-        save_players(PLAYERS_FILE, players)
-        save_matches(MATCHES_FILE, matches)
+        save_players(players)
+        save_matches(matches)
         return redirect("/")
     return render_template("record_match.html", players=players)
 
